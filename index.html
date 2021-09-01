@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="cover-all">
-        <span  class="buble">asdasd</span>
+       
+      
 
-        <div class="cover-game">
+        <div  class="cover-game">
+            <input type="checkbox" hidden name="" id="cb">
+          <label  for="cb">
             <img style="display: inline-block;transform: rotate(220deg);" src="img/archery.png" alt="" srcset="">
-            <input type="text" placeholder="Type">
-
+        </label>
+       
+            <input style="padding: 0.185rem 1.25rem;" id="input-text" type="text" placeholder="Type">
+             <span> Score : <span class="score" >0</span> </span>
         </div>
     </div>
     <script src="js/main.js"></script>

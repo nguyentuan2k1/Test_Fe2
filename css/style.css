@@ -11,17 +11,20 @@
     width: 100%;
     opacity: .7;
     position: relative;
+    
 }
 .cover-game{
  
     position: absolute;
-    bottom: 0vh;
+    bottom: 1%;
     left: 0;
     right: 0;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 1;
+    background: white;
     /* height: 1vh; */
     /* line-height: 100%; */
 
@@ -32,21 +35,24 @@
         top: 0vh;
     }
     100%{
-        top: 92.8vh;
+        top: 90vh;
     }
 }
 
 .buble{
-    position: relative;
+    position: absolute;
    text-align: center;
    border-radius: 50%;
-   padding: 1.5vh 3vh;
+   padding: 2vh 2vh;
    background: #000;
    color: white;
     animation-name: ballfall;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    /* animation-iteration-count: infinite; */
     animation-direction: alternate;
     
+}
+#cb:checked  ~ label > img {
+    background: red;
 }
 
