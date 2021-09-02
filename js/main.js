@@ -1,61 +1,61 @@
 const arrJPWord = new Map();
   arrJPWord.set('1', '一')
-.set('2', '二')
-.set('3', '三')
-.set('4', '四')
-.set('5', '五')
-.set('6','六')
-.set('7','七')
-.set('8','八')
-.set('9','九')
-.set('10','十')
-.set('a','あ')
-.set('i','い')
-.set('u','う')
-.set('e','え')
-.set('o','お')
-.set('ka','か')
-.set('ki','き')
-.set('ku','く')
-.set('ke','け')
-.set('ko','こ')
-.set('sa','さ')
-.set('shi','し')
-.set('su','す')
-.set('se','せ')
-.set('so','そ')
-.set('ta','た')
-.set('chi','ち')
-.set('tsu','つ')
-.set('te','て')
-.set('to','と')
-.set('na','な')
-.set('ni','に')
-.set('nu','ぬ')
-.set('ne','ね')
-.set('no','の')
-.set('ha','は')
-.set('hi','ひ')
-.set('fu','ふ')
-.set('he','へ')
-.set('ho','ほ')
-.set('ma','ま')
-.set('mi','み')
-.set('mu','む')
-.set('me','め')
-.set('mo','も')
-.set('ya','や')
-.set('yu','ゆ')
-.set('yo','よ')
-.set('ra','ら')
-.set('ri','り')
-.set('ru','る')
-.set('re','れ')
-.set('ro','ろ')
-.set('wa','わ')
-.set('wo','を')
+// .set('2', '二')
+// .set('3', '三')
+// .set('4', '四')
+// .set('5', '五')
+// .set('6','六')
+// .set('7','七')
+// .set('8','八')
+// .set('9','九')
+// .set('10','十')
+// .set('a','あ')
+// .set('i','い')
+// .set('u','う')
+// .set('e','え')
+// .set('o','お')
+// .set('ka','か')
+// .set('ki','き')
+// .set('ku','く')
+// .set('ke','け')
+// .set('ko','こ')
+// .set('sa','さ')
+// .set('shi','し')
+// .set('su','す')
+// .set('se','せ')
+// .set('so','そ')
+// .set('ta','た')
+// .set('chi','ち')
+// .set('tsu','つ')
+// .set('te','て')
+// .set('to','と')
+// .set('na','な')
+// .set('ni','に')
+// .set('nu','ぬ')
+// .set('ne','ね')
+// .set('no','の')
+// .set('ha','は')
+// .set('hi','ひ')
+// .set('fu','ふ')
+// .set('he','へ')
+// .set('ho','ほ')
+// .set('ma','ま')
+// .set('mi','み')
+// .set('mu','む')
+// .set('me','め')
+// .set('mo','も')
+// .set('ya','や')
+// .set('yu','ゆ')
+// .set('yo','よ')
+// .set('ra','ら')
+// .set('ri','り')
+// .set('ru','る')
+// .set('re','れ')
+// .set('ro','ろ')
+// .set('wa','わ')
+// .set('wo','を')
 .set('n','ん'); 
-
+var bongno  = new Audio('./music/Tieng-bong-bong-no-www_tiengdong_com.mp3');
 
 var arrJPWordValue = Array.from(arrJPWord.values());
 var arrTransWord = Array.from(arrJPWord.keys());
@@ -65,27 +65,27 @@ const chieucao = window.innerHeight;
 var end = false;
 var rdCreateBall ;
 console.log("rong"+chieurong+"Cao"+chieucao);
-
-
- function createbuble(){
+ function createbuble(color,timefall){
      var toadoX = Math.random() * (chieurong - 0) + 0;
-     var ramdom = Math.floor(Math.random() * (arrJPWord.size - 0 + 1) + 0);
-    console.log(ramdom);
-    $('.cover-all').append(`<span value='${arrTransWord[ramdom]}' class="buble" style="left:${toadoX}px" >${arrJPWordValue[ramdom]}</span>`);
-}
+     var ramdom = Math.floor(Math.random() * (arrJPWord.size - 1 + 1) + 0);  
+    $('.cover-all').append(`<span  value='${arrTransWord[ramdom]}' class="buble" style="left:${toadoX}px;background:${color}" >${arrJPWordValue[ramdom]}</span>`);
 
+}
 var divcha = document.querySelector('.cover-all');
 divcha.addEventListener('animationend',(e)=>{
-   console.log("end");
+ //  clearInterval(interval);
 })
 
 
 var interval = setInterval(()=>{
  rdCreateBall  = Math.random(0,1);
-    if(rdCreateBall<0.3){
-        createbuble();
-    }
-},200);
+ createbuble('blue');
+
+    // if(rdCreateBall<0.9 && !document.querySelector('#pause').checked ){
+    // }
+    // else if(rdCreateBall>0.8 && rdCreateBall<0.9){        
+    // }
+},1000);
 
 
 
@@ -116,6 +116,25 @@ function pointup(){
     let score = (Number)(document.querySelector('.score').innerHTML);
     score+=1;
     document.querySelector('.score').innerHTML = score;
-    var audio  = new Audio('./music/Tieng-bong-bong-no-www_tiengdong_com.mp3');
-    audio.play();
+    bongno.play();
 }
+
+function changeStatus(status_name,visible){
+    let   allbong = document.querySelectorAll('.buble');
+    allbong.forEach((element)=>{
+            element.style.animationPlayState  = status_name;
+            element.style.visibility = visible;
+    })
+}
+
+document.querySelector('#pause').addEventListener('change',(e)=>{
+  
+    if(e.target.checked){
+        changeStatus('paused','hidden');
+        document.querySelector('#input-text').style.visibility = 'hidden';
+    }
+    else{
+        changeStatus('running','visible');
+        document.querySelector('#input-text').style.visibility = 'visible';       
+    }
+})

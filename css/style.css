@@ -43,16 +43,56 @@
     position: absolute;
    text-align: center;
    border-radius: 50%;
-   padding: 2vh 2vh;
+   padding: 1vh 1vw;
    background: #000;
    color: white;
     animation-name: ballfall;
     animation-duration: 10s;
     /* animation-iteration-count: infinite; */
-    animation-direction: alternate;
-    
+    cursor: pointer;
 }
 #cb:checked  ~ label > img {
     background: red;
 }
+.cover-setting{
+    position: absolute;
+    right: 0;
+    top: 30%;
+    width: 3.125rem;
+    height: 6.25rem ;
+    background: linear-gradient(#f2709c,#ff9472);
+    border-radius: 0.375rem;
+  
 
+}
+.setting{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5rem 15% .5rem 15%;
+   
+   
+}
+.nutpause{
+    padding: 0px 0;
+    color:white;
+    background: linear-gradient(#aa4b6b,#6b6b83,#3b8d99); 
+     text-align: center;
+     font-size: 1.12500rem;
+}
+audio{
+}
+@media screen and (max-width: 63.9375em)  { 
+    .cover-setting{
+        top: 10%;
+    }
+    /* #mapid{
+        display: none;
+    }
+    .cover-map-mobile{
+        display: block;
+    } */
+  
+    /* CSS */
+    
+  }
