@@ -79,7 +79,10 @@ divcha.addEventListener('animationend',(e)=>{
 
 var interval = setInterval(()=>{
  rdCreateBall  = Math.random(0,1);
- createbuble('blue');
+ if(!document.querySelector('#pause').checked)
+ {
+    createbuble('blue');
+ }
 
     // if(rdCreateBall<0.9 && !document.querySelector('#pause').checked ){
     // }
