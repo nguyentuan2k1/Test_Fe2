@@ -43,7 +43,7 @@
     position: absolute;
    text-align: center;
    border-radius: 50%;
-   padding: 1vh 1vw;
+   padding: 1.3vh 1.3vw;
    background: #000;
    color: white;
     animation-name: ballfall;
@@ -95,4 +95,24 @@ audio{
   
     /* CSS */
     
+  }
+  .sao::after{
+    content: "";
+    position: inherit;
+    top: 0;
+    right: 0;
+    width: 1.2vw;
+    height: 1.6vh;
+    background: yellow;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  .btn-resart{
+      width: 100%;
+      margin: .8vh 0;
+      background: linear-gradient(#aa4b6b,#6b6b83,#3b8d99); 
+      outline: none;
+      border: none;
+      cursor: pointer;
+      padding: .5vh 0;
+
   }

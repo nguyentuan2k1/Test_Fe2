@@ -6,26 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/473ccb2a41.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
 </head>
 <body>
     <div class="cover-all">
+      
         <div  class="cover-game">
+            
            
             <input type="checkbox" hidden name="" id="cb">
           <label  for="cb">
             <img style="display: inline-block;transform: rotate(220deg);" src="img/archery.png" alt="" srcset="">
         </label>
-       
             <input  style="padding: 0.185rem 1.25rem;" id="input-text" type="text" placeholder="Type">
              <span> Score : <span class="score" >0</span> </span>
         </div>
         <div class="cover-setting">
             <div class="setting">
-            
                 <label style="cursor: pointer;" for="pause">
                     <p class="nutpause">||</p></label>
                 <input type="checkbox" hidden name=""  id="pause">
+                <button  class="btn-resart"  > <i style="font-size: 1vw; color: white; " class="fas fa-sync-alt"></i> </button>
+                <label style="cursor: pointer;" for="bgmusic">
+                    <p class="nutpause"><i id="icon_loa" class="fas fa-volume-up"></i> </p></label>
+                <input type="checkbox" hidden checked name=""  id="bgmusic">
+                <audio  controls  hidden autoplay id="musicnen"  >
+                    <source   src="music/nhacnen.mp3" type="audio/mp3">
+                  </audio>
             </div>
         </div>
     </div>
