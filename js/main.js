@@ -58,10 +58,9 @@ const arrJPWord = new Map();
 var bongno  = new Audio('./music/Tieng-bong-bong-no-www_tiengdong_com.mp3');
 
 var music = document.querySelector('#musicnen');
-
 var arrJPWordValue = Array.from(arrJPWord.values());
 var arrTransWord = Array.from(arrJPWord.keys());
-var load_music_success = false;
+var have_Music = false;
 
 const chieurong = window.innerWidth - 100;
 const chieucao = window.innerHeight;
@@ -92,7 +91,9 @@ var time_LoopInteval = 1000;
 }
 var divcha = document.querySelector('.cover-all');
 divcha.addEventListener('animationend',(e)=>{
- //  clearInterval(interval);
+   clearInterval(interval);
+    // alert("You are End");
+    console.log("End");
 })
 var interval = setInterval(()=>{
  rdCreateBall  = Math.random(0,1);
@@ -144,6 +145,49 @@ window.addEventListener('click',(e)=>{
     }
 })
 
+// window.onblur = function(e){
+//     console.log(e);
+//     document.querySelector('#pause').checked = true;
+//     let   allbong = document.querySelectorAll('.buble');
+//     allbong.forEach((element)=>{
+//             element.style.animationPlayState  = 'paused';
+           
+//     })
+//          music.pause();
+       
+// }
+// window.onfocus = function(e){
+//     console.log(e);
+//     document.querySelector('#pause').checked = false;
+//     let   allbong = document.querySelectorAll('.buble');
+//     allbong.forEach((element)=>{
+//         element.style.animationPlayState  = 'running';
+// })
+//     if(have_Music ){ music.play();}
+
+// }
+
+document.addEventListener('visibilitychange',(e)=>{
+   if (document.visibilityState  === 'visible'){
+    document.querySelector('#pause').checked = false;
+        let   allbong = document.querySelectorAll('.buble');
+        allbong.forEach((element)=>{
+            element.style.animationPlayState  = 'running';
+    })
+        if(have_Music ){ music.play();}
+}
+    else{
+        document.querySelector('#pause').checked = true;
+            let   allbong = document.querySelectorAll('.buble');
+            allbong.forEach((element)=>{
+                    element.style.animationPlayState  = 'paused';
+                   
+            })
+                 music.pause();
+    }
+})
+
+
 function pointup(){
     let score = (Number)(document.querySelector('.score').innerHTML);
     score+=1;
@@ -163,16 +207,13 @@ document.querySelector('#pause').addEventListener('change',(e)=>{
     if(e.target.checked){
         changeStatus('paused','hidden');
         document.querySelector('#input-text').style.visibility = 'hidden';
-        // if(load_music_success){
              music.pause();
-        // }
     }
     else{
         changeStatus('running','visible');
         document.querySelector('#input-text').style.visibility = 'visible'; 
-    //    if(load_music_success){
-          music.play();
-    //     }  
+        if(have_Music){ music.play();}
+         
     }
 })
 
@@ -182,14 +223,17 @@ document.querySelector('.btn-resart').onclick = function(){
 
 
 document.querySelector('#bgmusic').addEventListener('change',(e)=>{
-    if(e.target.checked){
-        music.muted = false;
-       
-        document.querySelector('#icon_loa').classList = ' fas fa-volume-up'
-    }
-    else{
+    if(!e.target.checked){
         music.muted = true;
         document.querySelector('#icon_loa').classList = 'fas fa-volume-mute'
+    }
+    else{
+
+        music.play();
+        music.muted = false;
+        have_Music = true;
+        document.querySelector('#icon_loa').classList = 'fas fa-volume-up'
+        
     }
 })
 
