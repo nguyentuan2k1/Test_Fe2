@@ -86,6 +86,12 @@ audio{
     .cover-setting{
         top: 10%;
     }
+    .cover-cungten p{
+        visibility:  hidden;
+    }
+    #input-text{
+        padding: 0.185rem ;
+    }
     /* #mapid{
         display: none;
     }
