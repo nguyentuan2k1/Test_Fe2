@@ -51,9 +51,7 @@
     /* animation-iteration-count: infinite; */
     cursor: pointer;
 }
-#cb:checked  ~ label > img {
-    background: red;
-}
+
 .cover-setting{
     position: absolute;
     right: 0;
@@ -78,7 +76,9 @@
     color:white;
     background: linear-gradient(#aa4b6b,#6b6b83,#3b8d99); 
      text-align: center;
-     font-size: 1.12500rem;
+     font-size: 1rem;
+     padding: .3rem 0;
+     border-radius: 0.25rem;
 }
 audio{
 }
@@ -116,3 +116,18 @@ audio{
       padding: .5vh 0;
 
   }
+  .cover-cungten{
+      display: flex;
+      align-items: center;
+      background: linear-gradient(#ff7e5f ,#feb47b);
+      border-radius: 50px;
+      margin-right: 30px;
+      padding: 0 10px;
+      color: tomato;
+      transition:  3s ease-in;
+      cursor: pointer;
+  }
+  #cb:checked ~ .cover-cungten{
+      background: linear-gradient(#56ab2f,#a8e063);
+  }
+  

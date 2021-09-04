@@ -68,7 +68,7 @@ var end = false;
 var rdCreateBall ;
 // code logic refesh and level up ... 
 var time_Ball_Fall = 5;
-var time_LoopInteval = 1000;
+var time_LoopInteval = 3000;
 
 
 
@@ -92,8 +92,12 @@ var time_LoopInteval = 1000;
 var divcha = document.querySelector('.cover-all');
 divcha.addEventListener('animationend',(e)=>{
    clearInterval(interval);
-    // alert("You are End");
-    console.log("End");
+    alert("Bạn đã thua với số điểm "+document.querySelector('.score').innerHTML);
+   let allbong = document.querySelectorAll('.buble');
+   allbong.forEach((e)=>{
+       e.remove();
+   })
+
 })
 var interval = setInterval(()=>{
  rdCreateBall  = Math.random(0,1);
@@ -135,9 +139,11 @@ document.querySelector('#input-text').addEventListener('keypress',(e)=>{
 
 window.addEventListener('click',(e)=>{
     let cb = document.querySelector('#cb');
-    if(cb.checked && e.target.getAttribute('class') == 'buble'){
-       e.target.remove();
+    if(cb.checked && (e.target.getAttribute('class') == 'buble' || e.target.getAttribute('class') == 'buble sao')){
+        e.target.remove();
+        if(e.target.getAttribute('class') == 'buble')
        pointup();
+       else{ pointup();pointup();}
     }
     if(e.target.getAttribute('diem')=='no')
     {
@@ -145,47 +151,24 @@ window.addEventListener('click',(e)=>{
     }
 })
 
-// window.onblur = function(e){
-//     console.log(e);
-//     document.querySelector('#pause').checked = true;
-//     let   allbong = document.querySelectorAll('.buble');
-//     allbong.forEach((element)=>{
-//             element.style.animationPlayState  = 'paused';
-           
-//     })
-//          music.pause();
-       
-// }
-// window.onfocus = function(e){
-//     console.log(e);
-//     document.querySelector('#pause').checked = false;
-//     let   allbong = document.querySelectorAll('.buble');
-//     allbong.forEach((element)=>{
-//         element.style.animationPlayState  = 'running';
-// })
-//     if(have_Music ){ music.play();}
 
-// }
-
-document.addEventListener('visibilitychange',(e)=>{
-   if (document.visibilityState  === 'visible'){
-    document.querySelector('#pause').checked = false;
+document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState === 'visible'){
+        document.querySelector('#pause').checked = false;
         let   allbong = document.querySelectorAll('.buble');
         allbong.forEach((element)=>{
             element.style.animationPlayState  = 'running';
-    })
-        if(have_Music ){ music.play();}
-}
+        })
+    }
     else{
         document.querySelector('#pause').checked = true;
-            let   allbong = document.querySelectorAll('.buble');
-            allbong.forEach((element)=>{
-                    element.style.animationPlayState  = 'paused';
-                   
-            })
-                 music.pause();
+        let   allbong = document.querySelectorAll('.buble');
+        allbong.forEach((element)=>{
+                element.style.animationPlayState  = 'paused';
+        })
     }
-})
+},true);
+
 
 
 function pointup(){
@@ -208,12 +191,14 @@ document.querySelector('#pause').addEventListener('change',(e)=>{
         changeStatus('paused','hidden');
         document.querySelector('#input-text').style.visibility = 'hidden';
              music.pause();
+            document.querySelector('.nutpause').querySelector('i').classList = 'fas fa-play';
     }
     else{
         changeStatus('running','visible');
         document.querySelector('#input-text').style.visibility = 'visible'; 
         if(have_Music){ music.play();}
-         
+        document.querySelector('.nutpause').querySelector('i').classList = 'fas fa-pause';
+
     }
 })
 
@@ -228,7 +213,6 @@ document.querySelector('#bgmusic').addEventListener('change',(e)=>{
         document.querySelector('#icon_loa').classList = 'fas fa-volume-mute'
     }
     else{
-
         music.play();
         music.muted = false;
         have_Music = true;
@@ -238,8 +222,6 @@ document.querySelector('#bgmusic').addEventListener('change',(e)=>{
 })
 
 
-
-
-
-
+// so cung  - rang buoc logic ..vv
+//var socung = 3 ;
 
