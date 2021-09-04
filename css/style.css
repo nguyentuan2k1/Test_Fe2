@@ -87,7 +87,7 @@ audio{
         top: 10%;
     }
     .cover-cungten p{
-        visibility:  hidden;
+        display: none;
     }
     #input-text{
         padding: 0.185rem ;
