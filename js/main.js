@@ -1,59 +1,59 @@
 const arrJPWord = new Map();
   arrJPWord.set('1', '一')
-// .set('2', '二')
-// .set('3', '三')
-// .set('4', '四')
-// .set('5', '五')
-// .set('6','六')
-// .set('7','七')
-// .set('8','八')
-// .set('9','九')
-// .set('10','十')
-// .set('a','あ')
-// .set('i','い')
-// .set('u','う')
-// .set('e','え')
-// .set('o','お')
-// .set('ka','か')
-// .set('ki','き')
-// .set('ku','く')
-// .set('ke','け')
-// .set('ko','こ')
-// .set('sa','さ')
-// .set('shi','し')
-// .set('su','す')
-// .set('se','せ')
-// .set('so','そ')
-// .set('ta','た')
-// .set('chi','ち')
-// .set('tsu','つ')
-// .set('te','て')
-// .set('to','と')
-// .set('na','な')
-// .set('ni','に')
-// .set('nu','ぬ')
-// .set('ne','ね')
-// .set('no','の')
-// .set('ha','は')
-// .set('hi','ひ')
-// .set('fu','ふ')
-// .set('he','へ')
-// .set('ho','ほ')
-// .set('ma','ま')
-// .set('mi','み')
-// .set('mu','む')
-// .set('me','め')
-// .set('mo','も')
-// .set('ya','や')
-// .set('yu','ゆ')
-// .set('yo','よ')
-// .set('ra','ら')
-// .set('ri','り')
-// .set('ru','る')
-// .set('re','れ')
-// .set('ro','ろ')
-// .set('wa','わ')
-// .set('wo','を')
+ .set('2', '二')
+ .set('3', '三')
+ .set('4', '四')
+ .set('5', '五')
+ .set('6','六')
+ .set('7','七')
+ .set('8','八')
+ .set('9','九')
+ .set('10','十')
+ .set('a','あ')
+ .set('i','い')
+ .set('u','う')
+.set('e','え')
+ .set('o','お')
+ .set('ka','か')
+ .set('ki','き')
+ .set('ku','く')
+ .set('ke','け')
+ .set('ko','こ')
+ .set('sa','さ')
+ .set('shi','し')
+ .set('su','す')
+ .set('se','せ')
+ .set('so','そ')
+ .set('ta','た')
+ .set('chi','ち')
+ .set('tsu','つ')
+ .set('te','て')
+ .set('to','と')
+ .set('na','な')
+ .set('ni','に')
+ .set('nu','ぬ')
+ .set('ne','ね')
+ .set('no','の')
+ .set('ha','は')
+ .set('hi','ひ')
+ .set('fu','ふ')
+ .set('he','へ')
+ .set('ho','ほ')
+ .set('ma','ま')
+ .set('mi','み')
+ .set('mu','む')
+ .set('me','め')
+ .set('mo','も')
+ .set('ya','や')
+ .set('yu','ゆ')
+ .set('yo','よ')
+ .set('ra','ら')
+ .set('ri','り')
+ .set('ru','る')
+ .set('re','れ')
+ .set('ro','ろ')
+ .set('wa','わ')
+ .set('wo','を')
 .set('n','ん'); 
 var bongno  = new Audio('./music/Tieng-bong-bong-no-www_tiengdong_com.mp3');
 
@@ -68,12 +68,13 @@ var end = false;
 var rdCreateBall ;
 // code logic refesh and level up ... 
 var time_Ball_Fall = 5;
-var time_LoopInteval = 3000;
+var time_LoopInteval = 7000;
+var level = 1 ; 
+var so_bong_da_bi_vuot_qua = 0;
 
 
 
 
-// 
  function createbuble(color,timefall,type){
      var toadoX = Math.random() * (chieurong - 0) + 0;
      var ramdom = Math.floor(Math.random() * (arrJPWord.size - 1 + 1) + 0);  
@@ -101,14 +102,36 @@ divcha.addEventListener('animationend',(e)=>{
 })
 var interval = setInterval(()=>{
  rdCreateBall  = Math.random(0,1);
+ if(so_bong_da_bi_vuot_qua>level*10)
+ {
+     level++ ;
+     document.querySelector('#level').innerHTML = level;
+ }
+ if(level<6){
+     if(!time_Ball_Fall  >=3)
+     {
+         time_Ball_Fall-=0.2;
+     }
+     
+ }
+ else{
+    if(!time_Ball_Fall  >=3)
+    {
+        time_Ball_Fall-=0.2;
+    }
+     if(time_LoopInteval>=1000){
+         time_LoopInteval -=500;
+    }
+
+ }
     if(rdCreateBall<0.8 && !document.querySelector('#pause').checked ){
-        createbuble('blue','7','none');
+        createbuble('blue',time_Ball_Fall,'none');
     }
     else if(rdCreateBall>=0.8 && rdCreateBall<0.9 && !document.querySelector('#pause').checked){
-        createbuble('blue','7','yes');
+        createbuble('blue',time_Ball_Fall,'yes');
     }
     else if(rdCreateBall>=0.9 && !document.querySelector('#pause').checked){
-        createbuble('black','7','no');
+        createbuble('black',time_Ball_Fall,'no');
     }
 },time_LoopInteval);
 
@@ -121,16 +144,15 @@ document.querySelector('#input-text').addEventListener('keypress',(e)=>{
             if(e.target.value == element.getAttribute('value')){
                if(element.getAttribute('diem')=='none'){
                 element.remove();
-                for (let index = 0; index < 100; index++) {
-                    pointup();
-                }
-               
+                pointup();
+                so_bong_da_bi_vuot_qua++;
                }
                else if(element.getAttribute('diem')=='yes')
                {
                 element.remove();
                 pointup();
                 pointup();
+                so_bong_da_bi_vuot_qua++;
                }
               
             }
