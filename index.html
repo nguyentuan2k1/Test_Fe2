@@ -27,7 +27,7 @@
                     </p>
                     <span
                         style="font-size: 1.2vw;background: white; border-radius: 50% ;padding: 5px; text-align: center; line-height: 100%; color:#1d2671 ; ">x<span
-                            id="cungdangco">3</span></span>
+                            class="cungdangco">3</span></span>
                 </div>
             </label>
             <input style="padding: 0.185rem 1.25rem;" id="input-text" type="text" placeholder="Type">
@@ -48,9 +48,65 @@
                 <audio controls hidden id="musicnen">
                     <source src="music/nhacnen.mp3" type="audio/mp3">
                 </audio>
+                <label for="store-cb">
+                <p class="nutpause"><i class="fas fa-store"></i></p>
+                  </label>
+                <input type="checkbox"  hidden name="" id="store-cb">
+                <div class="cover-store">
+                    <label for="store-cb"  class="store-modal"></label>
+                    <div class="store-container">
+                        <div style="border-bottom: 1px solid #ccc;" class="store-header">
+                            <p style="text-align: center;" >Store</p>
+                        </div>
+                        <div class="store-body">
+                            <div style="display: flex; justify-content: space-between;" class="body-cover-money-socung">
+                                <div class="money">
+                                </div>
+                                <div class="cungten">
+                                    x<span class="cungdangco">3</span> 
+                                </div>
+                            </div>
+                            <div class="cover-danh-sach-type-cung-ten">
+                                <div class="cac-loai-cung">
+                                    <img style="width: 100%;" src="img/archery.png" alt="" srcset="">
+                                    <p class="socungmua-cover" >
+                                        So cung: <span class="socungmua" >1</span>
+                                    </p>
+                                    <p class="price-cover" >
+                                        Gia: <span class="Price" >10</span>
+                                    </p>
+                                </div>
+                                <div class="cac-loai-cung">
+                                    <img style="width: 100%;" src="img/archery.png" alt="" srcset="">
+                                    <p class="socungmua-cover" >
+                                        So cung: <span class="socungmua" >5</span>
+                                    </p>
+                                    <p class="price-cover">
+                                        Gia: <span class="Price" >50</span>
+                                    </p>
+                                </div>
+                                <div class="cac-loai-cung">
+                                    <img style="width: 100%;" src="img/archery.png" alt="" srcset="">
+                                    <p class="socungmua-cover">
+                                        So cung: <span class="socungmua" >10</span>
+                                    </p>
+                                    <p class="price-cover">
+                                        Gia: <span class="Price" >100</span>
+                                    </p>
+                                </div>  
+                            </div>
+            
+                        </div>
+                    </div>
+               
+              </div>
             </div>
         </div>
+      
+        
     </div>
+   
+   
     <script src="js/main.js"></script>
 </body>
 

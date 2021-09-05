@@ -57,7 +57,6 @@
     right: 0;
     top: 30%;
     width: 3.125rem;
-    height: 6.25rem ;
     background: linear-gradient(#f2709c,#ff9472);
     border-radius: 0.375rem;
   
@@ -136,4 +135,53 @@ audio{
   #cb:checked ~ .cover-cungten{
       background: linear-gradient(#56ab2f,#a8e063);
   }
-  
+  /* store */
+  .cover-store{
+      display: none; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+        background: rgba(0, 0, 0, 0.938);
+      padding: 10% 15%;
+      opacity: 1;
+  }
+  .store-container{
+      position: relative;
+      background: white;
+      padding:1vh  1vw;
+      z-index: 22 ;
+      /* animation:  store-open  1s ease-in-out; */
+  }
+  @keyframes store-open {
+    0%{
+        top: -30%;
+    }
+    100%{
+        top: 0;
+    }
+  }
+
+  .cover-danh-sach-type-cung-ten{
+      display: flex;
+      justify-content: space-around;
+
+  }
+  .cac-loai-cung{
+      width: 30%;
+      text-align: center;
+      border: 1px solid blue;
+  }
+  .store-modal{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9;
+
+  }
+#store-cb:checked ~  .cover-store{
+      display: block;
+  }

@@ -140,10 +140,14 @@ document.querySelector('#input-text').addEventListener('keypress',(e)=>{
 window.addEventListener('click',(e)=>{
     let cb = document.querySelector('#cb');
     if(cb.checked && (e.target.getAttribute('class') == 'buble' || e.target.getAttribute('class') == 'buble sao')){
-        e.target.remove();
-        if(e.target.getAttribute('class') == 'buble')
-       pointup();
-       else{ pointup();pointup();}
+        if((Number)(document.querySelector('.cungdangco').innerHTML) > 0 )
+        {
+            e.target.remove();
+            if(e.target.getAttribute('class') == 'buble')
+           pointup();
+           else{ pointup();pointup();}
+           document.querySelector('.cungdangco').innerHTML = (Number)(document.querySelector('.cungdangco').innerHTML) -1;
+        }
     }
     if(e.target.getAttribute('diem')=='no')
     {
@@ -223,5 +227,52 @@ document.querySelector('#bgmusic').addEventListener('change',(e)=>{
 
 
 // so cung  - rang buoc logic ..vv
-//var socung = 3 ;
 
+
+document.querySelectorAll('.cac-loai-cung').forEach((e)=>{
+    e.addEventListener('click',()=>{
+     let sotienmuacung  = (Number)(e.querySelector('.price-cover').querySelector('.Price').innerHTML);
+     let money = document.querySelector('.money');
+     let tienconlai = (Number)(money.innerHTML) - sotienmuacung;
+     let cungdangcocuauser = document.querySelectorAll('.cungdangco');
+  
+     if(tienconlai<0)
+     {
+        alert("Bạn không đủ tiền mua cung tên này");
+     }
+     else{
+        let xacnhan = confirm("Ban co that su muon mua");
+        if(xacnhan){
+            money.innerHTML = tienconlai;
+            cungdangcocuauser.forEach((ex)=>{
+                ex.innerHTML = (Number)(ex.innerHTML)+(Number)(e.querySelector('.socungmua').innerHTML)
+            });
+        }
+     }
+    })
+})
+
+document.querySelector('#store-cb').addEventListener('change',(e)=>{
+    if(document.querySelector('#store-cb').checked){
+        document.querySelector('.money').innerHTML = document.querySelector('.score').innerHTML; 
+        document.querySelector('#pause').checked = true;
+        let   allbong = document.querySelectorAll('.buble');
+        allbong.forEach((element)=>{
+                element.style.animationPlayState  = 'paused';
+                element.style.visibility = 'hidden';
+        })
+       
+    }
+    else{
+        document.querySelector('#pause').checked = false;
+        let   allbong = document.querySelectorAll('.buble');
+        document.querySelector('.score').innerHTML = document.querySelector('.money').innerHTML; 
+      //  document.querySelector('.cungdangco').innerHTML = document.querySelectorAll('.cungdangco')[1].innerHTML;
+        allbong.forEach((element)=>{
+            element.style.animationPlayState  = 'running';
+            element.style.visibility = 'visible';
+        })
+        
+    }
+   
+})
