@@ -121,7 +121,10 @@ document.querySelector('#input-text').addEventListener('keypress',(e)=>{
             if(e.target.value == element.getAttribute('value')){
                if(element.getAttribute('diem')=='none'){
                 element.remove();
-                pointup();
+                for (let index = 0; index < 100; index++) {
+                    pointup();
+                }
+               
                }
                else if(element.getAttribute('diem')=='yes')
                {
@@ -158,11 +161,13 @@ window.addEventListener('click',(e)=>{
 
 document.addEventListener('visibilitychange',()=>{
     if(document.visibilityState === 'visible'){
-        document.querySelector('#pause').checked = false;
-        let   allbong = document.querySelectorAll('.buble');
-        allbong.forEach((element)=>{
-            element.style.animationPlayState  = 'running';
-        })
+        if(!document.querySelector('#store-cb').checked){     
+            document.querySelector('#pause').checked = false;
+            let   allbong = document.querySelectorAll('.buble');
+            allbong.forEach((element)=>{
+                element.style.animationPlayState  = 'running';
+            })
+        }
     }
     else{
         document.querySelector('#pause').checked = true;
